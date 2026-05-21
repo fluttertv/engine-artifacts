@@ -1,6 +1,6 @@
 # flutter-tvos Engine Artifacts
 
-Pre-built Flutter engine binaries for tvOS, targeting **Flutter 3.41.4**.
+Pre-built Flutter engine binaries for tvOS, targeting **Flutter 3.41.9**.
 
 These artifacts are consumed automatically by the
 [flutter-tvos](https://github.com/fluttertv/flutter-tvos) CLI via
@@ -35,7 +35,7 @@ Each zip contains:
 flutter-tvos precache
 
 # Custom source
-export TVOS_ENGINE_BASE_URL=https://github.com/fluttertv/engine-artifacts/releases/download/v1.0.0-flutter3.41.4
+export TVOS_ENGINE_BASE_URL=https://github.com/fluttertv/engine-artifacts/releases/download/v1.0.0-flutter3.41.9
 flutter-tvos precache
 ```
 
@@ -43,7 +43,7 @@ flutter-tvos precache
 
 ## Flutter Version
 
-Based on Flutter `3.41.4` with tvOS support.  
+Based on Flutter `3.41.9` with tvOS support.  
 Deployment target: **tvOS 13.0+**  
 Architecture: **arm64**
 
