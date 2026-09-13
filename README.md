@@ -1,10 +1,23 @@
 # flutter-tvos Engine Artifacts
 
-Pre-built Flutter engine binaries for tvOS, targeting **Flutter 3.41.9**.
+Pre-built Flutter engine binaries for tvOS, one release per engine commit.
 
 These artifacts are consumed automatically by the
 [flutter-tvos](https://github.com/fluttertv/flutter-tvos) CLI via
-`flutter-tvos precache`. You do not need to download them manually.
+`flutter-tvos precache`. You do not need to download them manually: each
+flutter-tvos release pins the engine commit it was tested against in
+`bin/internal/engine.version`, and the CLI fetches that release from here.
+
+---
+
+## Releases
+
+Every release is tagged `engine-<sha>`, the commit of the
+tvOS engine that produced it, and its title names the Flutter version the engine
+was built from. The tag is a commit rather than a Flutter version because one
+patch set can serve several Flutter releases; a SHA names what was actually
+built. The flutter-tvos [CHANGELOG](https://github.com/fluttertv/flutter-tvos/blob/main/CHANGELOG.md)
+links each CLI release to the engine release it uses.
 
 ---
 
@@ -26,6 +39,10 @@ Each zip contains:
 - `clang_arm64/impellerc` — Impeller shader compiler
 - Host variants include `gen_snapshot` and `gen/frontend_server_aot.dart.snapshot`
 
+The artifacts are published unsigned. `flutter-tvos` signs the engine on your
+machine with your own certificate on every device build; see
+[Code signing](https://github.com/fluttertv/flutter-tvos#code-signing).
+
 ---
 
 ## Usage
@@ -34,18 +51,18 @@ Each zip contains:
 # Automatic (recommended)
 flutter-tvos precache
 
-# Custom source
-export TVOS_ENGINE_BASE_URL=https://github.com/fluttertv/engine-artifacts/releases/download/v1.0.0-flutter3.41.9
+# Custom source: a mirror, or an engine you built yourself
+export TVOS_ENGINE_BASE_URL=https://github.com/fluttertv/engine-artifacts/releases/download/engine-<sha>
 flutter-tvos precache
 ```
 
 ---
 
-## Flutter Version
+## Platform
 
-Based on Flutter `3.41.9` with tvOS support.  
-Deployment target: **tvOS 13.0+**  
-Architecture: **arm64**
+Architecture: **arm64**, for both devices and the simulator.
+Rendering: **Impeller on Metal** (tvOS has no OpenGL).
+Apps created by flutter-tvos target **tvOS 15.0** and later.
 
 ---
 
