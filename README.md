@@ -52,9 +52,16 @@ machine with your own certificate on every device build; see
 flutter-tvos precache
 
 # Custom source: a mirror, or an engine you built yourself
-export TVOS_ENGINE_BASE_URL=https://github.com/fluttertv/engine-artifacts/releases/download/engine-<sha>
+export TVOS_ENGINE_BASE_URL=https://example.com/tvos-engine
 flutter-tvos precache
 ```
+
+`TVOS_ENGINE_BASE_URL` stops before the tag. The CLI appends the tag named in
+its `bin/internal/engine.version` and the zip name itself, and downloads
+`<base>/<tag>/<zip>`; the default base is
+`https://github.com/fluttertv/engine-artifacts/releases/download`. A mirror or
+a self-built engine has to serve the six zips under that layout, in a directory
+named exactly as `engine.version` says.
 
 ---
 
